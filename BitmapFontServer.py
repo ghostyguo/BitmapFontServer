@@ -65,16 +65,14 @@ class MyServer(BaseHTTPRequestHandler):
             print('*** query_components=',query_components)
         except:
             return    
-        
-        #font
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        
+                
         #size
         try:
             size = int(query_components['size'])
         except:
             size = 16   
         print('*** size=',size)
+        
         #text
         try:
             text = query_components['text']
@@ -94,7 +92,7 @@ class MyServer(BaseHTTPRequestHandler):
             img = np.zeros((height,width,3), np.uint8)
                 
             ## Use simsum.ttc to write Chinese.
-            fontpath = './mingliu.ttc' #"simsun.ttc"     
+            fontpath = './mingliu.ttc'     
             font = ImageFont.truetype(fontpath, size)
             img_pil = Image.fromarray(img)
             draw = ImageDraw.Draw(img_pil)
